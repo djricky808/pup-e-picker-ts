@@ -1,1 +1,151 @@
-{"dogs":[{"name":"Nannie","image":"/assets/corgi.png","description":"inquisitively oof calm acupuncture whereas equatorial gosh effectuate","isFavorite":true,"id":0},{"name":"Brycen","image":"/assets/chihuahua.avif","description":"bottleful after baste obliterate putrid","isFavorite":false,"id":1},{"name":"Thurman","image":"/assets/boxer.png","description":"subtle though jade indeed before island aha","isFavorite":true,"id":2},{"name":"Orrin","image":"/assets/chihuahua.avif","description":"provided after despite till watcher","isFavorite":true,"id":3},{"name":"Lucie","image":"/assets/dalmation.png","description":"psst justly browsing all solid","isFavorite":false,"id":4},{"name":"Luella","image":"/assets/blue-heeler.png","description":"smoothly idolized naturally yum that till phew","isFavorite":false,"id":5},{"name":"Shannon","image":"/assets/cowardly.png","description":"invite insistent brr truthfully athwart bah straddle assassination","isFavorite":true,"id":6},{"name":"Imani","image":"/assets/dalmation.png","description":"rattle excluding skean on recovery","isFavorite":true,"id":7},{"name":"Danyka","image":"/assets/chihuahua.avif","description":"chillax daily sally however lest","isFavorite":true,"id":8},{"name":"Toby","image":"/assets/blue-heeler.png","description":"wildly forenenst rightfully till how","isFavorite":false,"id":9},{"name":"Tyson","image":"/assets/blue-heeler.png","description":"inequality maroon however nimble segregate","isFavorite":false,"id":10},{"name":"Eulalia","image":"/assets/boxer.png","description":"foolish rarely despite fooey frantically definitive jubilant dislike","isFavorite":true,"id":11},{"name":"Lawson","image":"/assets/cowardly.png","description":"uniform but wet cruelly knowledgeable","isFavorite":true,"id":12},{"name":"Cooper","image":"/assets/dalmation.png","description":"furthermore when righteously when handlebar breathe considering so","isFavorite":false,"id":13},{"name":"Melody","image":"/assets/chihuahua.avif","description":"demotivate above hmph exploit hatbox quaver these","isFavorite":false,"id":14},{"name":"Linda","image":"/assets/blue-heeler.png","description":"instead angelic kissingly easily apropos tempting crease","isFavorite":true,"id":15},{"name":"Dakota","image":"/assets/chihuahua.avif","description":"salad hopelessly loyally gah whoever","isFavorite":true,"id":16},{"name":"Stewart","image":"/assets/blue-heeler.png","description":"bad whoever obedient modulo investigation daily yum","isFavorite":true,"id":17},{"name":"Melyssa","image":"/assets/cowardly.png","description":"drat considering youthfully unfortunately whereas aside underline jealously","isFavorite":false,"id":18},{"name":"Korey","image":"/assets/chihuahua.avif","description":"loosely at bossy surprisingly friendly for well-lit seldom","isFavorite":false,"id":19}]}
+{
+  "dogs": [
+    {
+      "name": "Alexanne",
+      "image": "/assets/cowardly.png",
+      "description": "deregulate consequently yippee meh that incite barring offshore",
+      "isFavorite": false,
+      "id": 0
+    },
+    {
+      "name": "Olaf",
+      "image": "/assets/corgi.png",
+      "description": "amid rule ha spellcheck analyse",
+      "isFavorite": false,
+      "id": 1
+    },
+    {
+      "name": "Keara",
+      "image": "/assets/boxer.png",
+      "description": "small distribution tab daring yodel",
+      "isFavorite": false,
+      "id": 2
+    },
+    {
+      "name": "Matteo",
+      "image": "/assets/boxer.png",
+      "description": "browser cautiously vastly yuck zowie yet incidentally",
+      "isFavorite": true,
+      "id": 3
+    },
+    {
+      "name": "Garret",
+      "image": "/assets/dalmation.png",
+      "description": "punch festoon secret recklessly shakily oak supposing jar",
+      "isFavorite": true,
+      "id": 4
+    },
+    {
+      "name": "Micah",
+      "image": "/assets/boxer.png",
+      "description": "deliberately atop by sympathetic avoid unused rapidly",
+      "isFavorite": false,
+      "id": 5
+    },
+    {
+      "name": "Kali",
+      "image": "/assets/corgi.png",
+      "description": "or how er okra grizzled yum truly",
+      "isFavorite": true,
+      "id": 6
+    },
+    {
+      "name": "Yazmin",
+      "image": "/assets/chihuahua.avif",
+      "description": "before partial because odd include seriously dictionary naturally",
+      "isFavorite": false,
+      "id": 7
+    },
+    {
+      "name": "Jerrold",
+      "image": "/assets/chihuahua.avif",
+      "description": "yearly vest ouch valiantly yuck psst immediately considering",
+      "isFavorite": true,
+      "id": 8
+    },
+    {
+      "name": "Chaz",
+      "image": "/assets/dalmation.png",
+      "description": "unfolded commonly notwithstanding frantically beyond versus despite",
+      "isFavorite": false,
+      "id": 9
+    },
+    {
+      "name": "Elvis",
+      "image": "/assets/boxer.png",
+      "description": "noisily for sleuth chastity hourly incense sleepily",
+      "isFavorite": true,
+      "id": 10
+    },
+    {
+      "name": "Halle",
+      "image": "/assets/dalmation.png",
+      "description": "than modulo rhetoric uh-huh infamous woodwind developing for",
+      "isFavorite": true,
+      "id": 11
+    },
+    {
+      "name": "Blair",
+      "image": "/assets/dalmation.png",
+      "description": "until handy uh-huh snow uh-huh infusion briskly",
+      "isFavorite": true,
+      "id": 12
+    },
+    {
+      "name": "Bernadine",
+      "image": "/assets/chihuahua.avif",
+      "description": "maggot whether off tackle yippee though aboard drag",
+      "isFavorite": false,
+      "id": 13
+    },
+    {
+      "name": "Cordell",
+      "image": "/assets/boxer.png",
+      "description": "aw acclaimed rap yowza weary conga unusual early",
+      "isFavorite": true,
+      "id": 14
+    },
+    {
+      "name": "Citlalli",
+      "image": "/assets/corgi.png",
+      "description": "an cooperative boastfully which explorer flashy seldom",
+      "isFavorite": true,
+      "id": 15
+    },
+    {
+      "name": "Rowena",
+      "image": "/assets/boxer.png",
+      "description": "where whereas lightly stem except neuropathologist ill-informed",
+      "isFavorite": true,
+      "id": 16
+    },
+    {
+      "name": "Isaiah",
+      "image": "/assets/dalmation.png",
+      "description": "towards separately whoever incidentally suspiciously",
+      "isFavorite": true,
+      "id": 17
+    },
+    {
+      "name": "Titus",
+      "image": "/assets/corgi.png",
+      "description": "scrounge blade schematize liability masticate",
+      "isFavorite": false,
+      "id": 18
+    },
+    {
+      "name": "Gino",
+      "image": "/assets/blue-heeler.png",
+      "description": "till aromatic diet reassign fooey",
+      "isFavorite": false,
+      "id": 19
+    },
+    {
+      "name": "Stoutland",
+      "image": "Stoutland.jpg",
+      "description": "this is a pokemon",
+      "isFavorite": true,
+      "id": 20
+    }
+  ]
+}
