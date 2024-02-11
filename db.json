@@ -141,11 +141,18 @@
       "id": 19
     },
     {
-      "name": "Stoutland",
-      "image": "Stoutland.jpg",
-      "description": "this is a pokemon",
-      "isFavorite": true,
+      "name": "Houndour",
+      "image": "/assets/boxer.jpeg",
+      "description": "He is a Pokemon from the Second Generation",
+      "isFavorite": false,
       "id": 20
+    },
+    {
+      "name": "Yamper",
+      "image": "/assets/corgi.png",
+      "description": "He is a Pokemon from the 8th Generation",
+      "isFavorite": false,
+      "id": 21
     }
   ]
 }
