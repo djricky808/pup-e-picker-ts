@@ -3,6 +3,7 @@ import { DogCard } from "../Shared/DogCard";
 //import { dogPictures } from "../dog-pictures";
 import { Dog } from "../types";
 import { Requests } from "../api";
+import { useState } from "react";
 
 // Right now these dogs are constant, but in reality we should be getting these from our server
 export const FunctionalDogs = ({
@@ -10,24 +11,32 @@ export const FunctionalDogs = ({
   setIsLoading,
   allDogs,
   refetchData,
+  getFavoritedDogs,
+  getUnfavoritedDogs,
+  activeTab,
 }: {
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
   allDogs: Dog[];
   refetchData: () => void;
+  getFavoritedDogs: Dog[];
+  getUnfavoritedDogs: Dog[];
+  activeTab: string | null;
 }) => {
-  // const [allDogs, setAllDogs] = useState<Dog[]>([]);
-  //const [isFavorite, setIsFavorite] = useState<boolean>(false);
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  // const refetchData = () => {
-  //   return Requests.getAllDogs().then((dogs) => setAllDogs(dogs));
-  // };
+  const [filteredDogs, setFilteredDogs] = useState<Dog[]>(allDogs);
+  useEffect(()=> {
+  if (activeTab === "favorited") {
+    setFilteredDogs(getFavoritedDogs);
+  } else if (activeTab === "unfavorited") {
+    setFilteredDogs(getUnfavoritedDogs);
+  } else {
+    setFilteredDogs(allDogs);
+  }}, [activeTab, allDogs, getFavoritedDogs, getUnfavoritedDogs]);
 
   const favoriteHandler = (dog: Dog) => {
     setIsLoading(true);
-    const newFavoriteStatus = !dog.isFavorite
-    dog.isFavorite = newFavoriteStatus
+    const newFavoriteStatus = !dog.isFavorite;
+    dog.isFavorite = newFavoriteStatus;
     return Requests.updateDog(dog)
       .then(() => refetchData())
       .finally(() => setIsLoading(false));
@@ -36,20 +45,16 @@ export const FunctionalDogs = ({
   useEffect(() => {
     refetchData();
   }, []);
+
   return (
     //  the "<> </>"" are called react fragments, it's like adding all the html inside
     // without adding an actual html element
     <>
-      {allDogs.map((dog) => (
+      {filteredDogs.map((dog) => (
         <DogCard
           dog={dog}
           onHeartClick={() => {
             favoriteHandler(dog);
-            // setIsLoading(true);
-            // setIsFavorite(false);
-            // return Requests.updateDog(dog)
-            // .then(()=>{refetchData})
-            // .finally(()=> setIsLoading(false))
           }}
           onEmptyHeartClick={() => favoriteHandler(dog)}
           onTrashIconClick={() => {

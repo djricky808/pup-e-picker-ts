@@ -1,8 +1,21 @@
 // you can use this type for react children if you so choose
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { Dog } from "../types";
 
-export const FunctionalSection = () => {
+export const FunctionalSection = ({
+  children,
+  activeTab,
+  setActiveTab,
+  getFavoritedDogs,
+  getUnfavoritedDogs,
+}: {
+  children: ReactNode;
+  activeTab: string | null;
+  setActiveTab: (activeTab: string | null) => void;
+  getFavoritedDogs: Dog[];
+  getUnfavoritedDogs: Dog[];
+}) => {
   return (
     <section id="main-section">
       <div className="container-header">
@@ -12,20 +25,39 @@ export const FunctionalSection = () => {
         </Link>
         <div className="selectors">
           {/* This should display the favorited count */}
-          <div className={`selector active`} onClick={() => {}}>
-            favorited ( 12 )
+          <div
+            className={`selector ${activeTab === "favorited" ? "active" : ""}`}
+            onClick={() => {
+              setActiveTab(`${activeTab === "favorited" ? "" : "favorited"}`);
+            }}
+          >
+            favorited ({getFavoritedDogs.length})
           </div>
 
           {/* This should display the unfavorited count */}
-          <div className={`selector`} onClick={() => {}}>
-            unfavorited ( 25 )
+          <div
+            className={`selector ${
+              activeTab === "unfavorited" ? "active" : ""
+            }`}
+            onClick={() => {
+              setActiveTab(
+                `${activeTab === "unfavorited" ? "" : "unfavorited"}`
+              );
+            }}
+          >
+            unfavorited ( {getUnfavoritedDogs.length} )
           </div>
-          <div className={`selector`} onClick={() => {}}>
+          <div
+            className={`selector ${activeTab === "create dog" ? "active" : ""}`}
+            onClick={() => {
+              setActiveTab(`${activeTab === "create dog" ? "" : "create dog"}`);
+            }}
+          >
             create dog
           </div>
         </div>
       </div>
-      <div className="content-container"></div>
+      <div className="content-container">{children}</div>
     </section>
   );
 };

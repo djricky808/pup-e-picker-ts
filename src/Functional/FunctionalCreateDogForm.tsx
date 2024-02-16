@@ -8,22 +8,19 @@ import { Dog } from "../types";
 export const FunctionalCreateDogForm = ({
   createDog,
   isLoading,
-  setIsLoading,
-}: {
+  }: {
   createDog: (dog: Omit<Dog, "id">) => void;
   isLoading: boolean;
-  setIsLoading: (isLoading: boolean) => void;
 }) => {
   const [dogNameInput, setDogNameInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
-  const [dogImageInput, setDogImageInput] = useState("");
+  const [dogImageInput, setDogImageInput] = useState('/assets/blue-heeler.png');
 
   return (
     <form
       action=""
       id="create-dog-form"
       onSubmit={(e) => {
-        setIsLoading(true)
         e.preventDefault();
         createDog({
           name: dogNameInput,
@@ -34,7 +31,6 @@ export const FunctionalCreateDogForm = ({
         setDogImageInput('');
         setDescriptionInput('');
         setDogNameInput('');
-        setIsLoading(false);
       }}
     >
       <h4>Create a New Dog</h4>

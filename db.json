@@ -25,7 +25,7 @@
       "name": "Matteo",
       "image": "/assets/boxer.png",
       "description": "browser cautiously vastly yuck zowie yet incidentally",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 3
     },
     {
@@ -144,13 +144,13 @@
       "name": "Houndour",
       "image": "/assets/boxer.jpeg",
       "description": "He is a Pokemon from the Second Generation",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 20
     },
     {
       "name": "Yamper",
       "image": "/assets/corgi.png",
-      "description": "He is a Pokemon from the 8th Generation",
+      "description": "This is a Pokemon from the 8th Generation",
       "isFavorite": false,
       "id": 21
     }
