@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { DogCard } from "../Shared/DogCard";
 //import { dogPictures } from "../dog-pictures";
-import { Dog } from "../types";
+import { Dog, DogCardsLayout } from "../types";
 import { Requests } from "../api";
 import { useState } from "react";
 
@@ -14,24 +14,17 @@ export const FunctionalDogs = ({
   getFavoritedDogs,
   getUnfavoritedDogs,
   activeTab,
-}: {
-  isLoading: boolean;
-  setIsLoading: (isLoading: boolean) => void;
-  allDogs: Dog[];
-  refetchData: () => void;
-  getFavoritedDogs: Dog[];
-  getUnfavoritedDogs: Dog[];
-  activeTab: string | null;
-}) => {
+}: DogCardsLayout) => {
   const [filteredDogs, setFilteredDogs] = useState<Dog[]>(allDogs);
-  useEffect(()=> {
-  if (activeTab === "favorited") {
-    setFilteredDogs(getFavoritedDogs);
-  } else if (activeTab === "unfavorited") {
-    setFilteredDogs(getUnfavoritedDogs);
-  } else {
-    setFilteredDogs(allDogs);
-  }}, [activeTab, allDogs, getFavoritedDogs, getUnfavoritedDogs]);
+  useEffect(() => {
+    if (activeTab === "favorited") {
+      setFilteredDogs(getFavoritedDogs);
+    } else if (activeTab === "unfavorited") {
+      setFilteredDogs(getUnfavoritedDogs);
+    } else {
+      setFilteredDogs(allDogs);
+    }
+  }, [activeTab, allDogs, getFavoritedDogs, getUnfavoritedDogs]);
 
   const favoriteHandler = (dog: Dog) => {
     setIsLoading(true);
@@ -53,6 +46,7 @@ export const FunctionalDogs = ({
       {filteredDogs.map((dog) => (
         <DogCard
           dog={dog}
+          key={dog.id}
           onHeartClick={() => {
             favoriteHandler(dog);
           }}

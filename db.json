@@ -144,15 +144,22 @@
       "name": "Houndour",
       "image": "/assets/boxer.jpeg",
       "description": "He is a Pokemon from the Second Generation",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 20
     },
     {
       "name": "Yamper",
       "image": "/assets/corgi.png",
       "description": "This is a Pokemon from the 8th Generation",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 21
+    },
+    {
+      "name": "Houndstone",
+      "image": "/assets/blue-heeler.png",
+      "description": "The newest pokemon from Generation 9",
+      "isFavorite": true,
+      "id": 22
     }
   ]
 }

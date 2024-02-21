@@ -1,7 +1,6 @@
 // you can use this type for react children if you so choose
-import { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { Dog } from "../types";
+import { SectionTypes } from "../types";
 
 export const FunctionalSection = ({
   children,
@@ -9,13 +8,7 @@ export const FunctionalSection = ({
   setActiveTab,
   getFavoritedDogs,
   getUnfavoritedDogs,
-}: {
-  children: ReactNode;
-  activeTab: string | null;
-  setActiveTab: (activeTab: string | null) => void;
-  getFavoritedDogs: Dog[];
-  getUnfavoritedDogs: Dog[];
-}) => {
+}: Omit<SectionTypes, "handleTabClick">) => {
   return (
     <section id="main-section">
       <div className="container-header">

@@ -8,13 +8,13 @@ import { Dog } from "../types";
 export const FunctionalCreateDogForm = ({
   createDog,
   isLoading,
-  }: {
+}: {
   createDog: (dog: Omit<Dog, "id">) => void;
   isLoading: boolean;
 }) => {
   const [dogNameInput, setDogNameInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
-  const [dogImageInput, setDogImageInput] = useState('/assets/blue-heeler.png');
+  const [dogImageInput, setDogImageInput] = useState("/assets/blue-heeler.png");
 
   return (
     <form
@@ -28,9 +28,9 @@ export const FunctionalCreateDogForm = ({
           description: descriptionInput,
           isFavorite: false,
         });
-        setDogImageInput('');
-        setDescriptionInput('');
-        setDogNameInput('');
+        setDogImageInput("");
+        setDescriptionInput("");
+        setDogNameInput("");
       }}
     >
       <h4>Create a New Dog</h4>
@@ -57,7 +57,7 @@ export const FunctionalCreateDogForm = ({
       ></textarea>
       <label htmlFor="picture">Select an Image</label>
       <select
-        id=""
+        disabled={isLoading}
         value={dogImageInput}
         onChange={(e) => {
           setDogImageInput(e.target.value);
