@@ -1,14 +1,23 @@
 // you can use this type for react children if you so choose
 import { Link } from "react-router-dom";
-import { SectionTypes } from "../types";
+import { ActiveTabs, Dog } from "../types";
+import { ReactNode } from "react";
+
+type FSectionTypes = {
+  children: ReactNode;
+  activeTab: string | null;
+  favoritedDogs: Dog[];
+  unfavoritedDogs: Dog[];
+  handleTabClick: (tab: ActiveTabs) => void;
+};
 
 export const FunctionalSection = ({
   children,
   activeTab,
-  setActiveTab,
   favoritedDogs,
   unfavoritedDogs,
-}: Omit<SectionTypes, "handleTabClick">) => {
+  handleTabClick,
+}: FSectionTypes) => {
   return (
     <section id="main-section">
       <div className="container-header">
@@ -21,7 +30,7 @@ export const FunctionalSection = ({
           <div
             className={`selector ${activeTab === "favorited" ? "active" : ""}`}
             onClick={() => {
-              setActiveTab(`${activeTab === "favorited" ? "" : "favorited"}`);
+              handleTabClick(`favorited`);
             }}
           >
             favorited ({favoritedDogs.length})
@@ -33,9 +42,7 @@ export const FunctionalSection = ({
               activeTab === "unfavorited" ? "active" : ""
             }`}
             onClick={() => {
-              setActiveTab(
-                `${activeTab === "unfavorited" ? "" : "unfavorited"}`
-              );
+              handleTabClick(`unfavorited`);
             }}
           >
             unfavorited ( {unfavoritedDogs.length} )
@@ -43,7 +50,7 @@ export const FunctionalSection = ({
           <div
             className={`selector ${activeTab === "create dog" ? "active" : ""}`}
             onClick={() => {
-              setActiveTab(`${activeTab === "create dog" ? "" : "create dog"}`);
+              handleTabClick(`create dog`);
             }}
           >
             create dog

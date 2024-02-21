@@ -1,12 +1,19 @@
 // you can use `ReactNode` to add a type to the children prop
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import { SectionTypes } from "../types";
+import { ActiveTabs, Dog } from "../types";
+import { ReactNode } from "react";
 
-export class ClassSection extends Component<
-  Omit<SectionTypes, "setActiveTab">
-> {
-  componentDidMount(): void {}
+type CSectionTypes = {
+  children: ReactNode;
+  activeTab: ActiveTabs | null;
+  favoritedDogs: Dog[];
+  unfavoritedDogs: Dog[];
+  handleTabClick: (tab: ActiveTabs) => void;
+};
+
+export class ClassSection extends Component<CSectionTypes> {
+
   render() {
     const {
       children,

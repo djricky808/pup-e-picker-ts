@@ -1,9 +1,18 @@
 import { useEffect } from "react";
 import { DogCard } from "../Shared/DogCard";
-//import { dogPictures } from "../dog-pictures";
-import { Dog, DogCardsLayout } from "../types";
+import { Dog } from "../types";
 import { Requests } from "../api";
 import { useState } from "react";
+
+type FDogCardsLayout = {
+  isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
+  allDogs: Dog[];
+  refetchData: () => void;
+  favoritedDogs: Dog[];
+  unfavoritedDogs: Dog[];
+  activeTab: string | null;
+};
 
 // Right now these dogs are constant, but in reality we should be getting these from our server
 export const FunctionalDogs = ({
@@ -14,8 +23,9 @@ export const FunctionalDogs = ({
   favoritedDogs,
   unfavoritedDogs,
   activeTab,
-}: DogCardsLayout) => {
+}: FDogCardsLayout) => {
   const [filteredDogs, setFilteredDogs] = useState<Dog[]>(allDogs);
+
   useEffect(() => {
     if (activeTab === "favorited") {
       setFilteredDogs(favoritedDogs);

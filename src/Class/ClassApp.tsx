@@ -3,7 +3,7 @@ import { ClassSection } from "./ClassSection";
 import { ClassDogs } from "./ClassDogs";
 import { ClassCreateDogForm } from "./ClassCreateDogForm";
 import { Requests } from "../api";
-import { Dog } from "../types";
+import { ActiveTabs, Dog } from "../types";
 
 export class ClassApp extends Component {
   state = {
@@ -12,8 +12,8 @@ export class ClassApp extends Component {
     activeTab: null,
   };
 
-  handleTabClick = (tab: string) => {
-    this.setState({ activeTab: this.state.activeTab === tab ? "" : tab });
+  handleTabClick = (tab: ActiveTabs) => {
+    this.setState({ activeTab: this.state.activeTab === tab ? null : tab });
   };
 
   render() {

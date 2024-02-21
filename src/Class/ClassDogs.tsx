@@ -1,11 +1,19 @@
 import { DogCard } from "../Shared/DogCard";
 import { Component } from "react";
-import { DogCardsLayout } from "../types";
-import { Dog } from "../types";
+import { ActiveTabs, Dog } from "../types";
 import { Requests } from "../api";
 
+type CDogCardsLayout = {
+  isLoading: boolean;
+  allDogs: Dog[];
+  refetchData: () => void;
+  favoritedDogs: Dog[];
+  unfavoritedDogs: Dog[];
+  activeTab: ActiveTabs | null;
+};
+
 // Right now these dogs are constant, but in reality we should be getting these from our server
-export class ClassDogs extends Component<Omit<DogCardsLayout, "setIsLoading">> {
+export class ClassDogs extends Component<CDogCardsLayout> {
   state = {
     filteredDogs: this.props.allDogs,
     isLoading: false,
@@ -58,8 +66,7 @@ export class ClassDogs extends Component<Omit<DogCardsLayout, "setIsLoading">> {
   render() {
     const { isLoading } = this.state;
     const filteredDogs = (): Dog[] => {
-      const { activeTab, favoritedDogs, unfavoritedDogs, allDogs } =
-        this.props;
+      const { activeTab, favoritedDogs, unfavoritedDogs, allDogs } = this.props;
       if (activeTab === "favorited") {
         return favoritedDogs;
       } else if (activeTab === "unfavorited") {
@@ -86,7 +93,6 @@ export class ClassDogs extends Component<Omit<DogCardsLayout, "setIsLoading">> {
             isLoading={isLoading}
           />
         ))}
-
       </>
     );
   }

@@ -2,18 +2,16 @@ import { FunctionalCreateDogForm } from "./FunctionalCreateDogForm";
 import { FunctionalDogs } from "./FunctionalDogs";
 import { FunctionalSection } from "./FunctionalSection";
 import { useState } from "react";
-import { Dog } from "../types";
+import { ActiveTabs, Dog } from "../types";
 import { Requests } from "../api";
 import toast from "react-hot-toast";
 
 export function FunctionalApp() {
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<ActiveTabs | null>(null);
 
-  const favoritedDogs = allDogs.filter(
-    (dogs: Dog) => dogs.isFavorite === true
-  );
+  const favoritedDogs = allDogs.filter((dogs: Dog) => dogs.isFavorite === true);
 
   const unfavoritedDogs = allDogs.filter(
     (dogs: Dog) => dogs.isFavorite === false
@@ -21,6 +19,10 @@ export function FunctionalApp() {
 
   const refetchData = () => {
     return Requests.getAllDogs().then((dogs) => setAllDogs(dogs));
+  };
+
+  const handleTabClick = (tab: ActiveTabs) => {
+    setActiveTab(activeTab === tab ? null : tab);
   };
 
   const createDog = (dog: Omit<Dog, "id">) => {
@@ -42,7 +44,7 @@ export function FunctionalApp() {
       </header>
       <FunctionalSection
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        handleTabClick={handleTabClick}
         favoritedDogs={favoritedDogs}
         unfavoritedDogs={unfavoritedDogs}
       >
