@@ -15,24 +15,6 @@ export class ClassDogs extends Component<Omit<DogCardsLayout, "setIsLoading">> {
     this.fetchData();
   }
 
-  // componentDidUpdate(prevProps: Omit<DogCardsLayout, "setIsLoading">): void {
-  //   if (prevProps.activeTab !== this.props.activeTab) {
-  //     // this.updateFilteredDogs();
-  //   }
-  // }
-
-  // updateFilteredDogs = (): void => {
-  //   const { activeTab, getFavoritedDogs, getUnfavoritedDogs, allDogs } =
-  //     this.props;
-  //   if (activeTab === "favorited") {
-  //     this.setState({ filteredDogs: getFavoritedDogs });
-  //   } else if (activeTab === "unfavorited") {
-  //     this.setState({ filteredDogs: getUnfavoritedDogs });
-  //   } else {
-  //     this.setState({ filteredDogs: allDogs });
-  //   }
-  // };
-
   componentDidUpdate(prevProps: { isLoading: boolean }) {
     if (prevProps.isLoading !== this.props.isLoading) {
       this.setState({ isLoading: this.props.isLoading });
@@ -42,7 +24,6 @@ export class ClassDogs extends Component<Omit<DogCardsLayout, "setIsLoading">> {
   async fetchData(): Promise<void> {
     try {
       await this.props.refetchData();
-      // await this.updateFilteredDogs();
     } catch (error) {
       console.error("Error fetching data", error);
     }
@@ -53,7 +34,6 @@ export class ClassDogs extends Component<Omit<DogCardsLayout, "setIsLoading">> {
       this.setState({ isLoading: true });
       await Requests.deleteDog(dogId);
       await this.props.refetchData();
-      // await this.updateFilteredDogs();
     } catch (error) {
       console.error("Error fetching data", error);
     } finally {
@@ -68,7 +48,6 @@ export class ClassDogs extends Component<Omit<DogCardsLayout, "setIsLoading">> {
       dog.isFavorite = newFavoriteStatus;
       await Requests.updateDog(dog);
       await this.props.refetchData();
-      // await this.updateFilteredDogs();
     } catch (error) {
       console.error("Error fetching data", error);
     } finally {
@@ -79,12 +58,12 @@ export class ClassDogs extends Component<Omit<DogCardsLayout, "setIsLoading">> {
   render() {
     const { isLoading } = this.state;
     const filteredDogs = (): Dog[] => {
-      const { activeTab, getFavoritedDogs, getUnfavoritedDogs, allDogs } =
+      const { activeTab, favoritedDogs, unfavoritedDogs, allDogs } =
         this.props;
       if (activeTab === "favorited") {
-        return getFavoritedDogs;
+        return favoritedDogs;
       } else if (activeTab === "unfavorited") {
-        return getUnfavoritedDogs;
+        return unfavoritedDogs;
       } else {
         return allDogs;
       }
@@ -107,26 +86,7 @@ export class ClassDogs extends Component<Omit<DogCardsLayout, "setIsLoading">> {
             isLoading={isLoading}
           />
         ))}
-        {/* <DogCard
-          dog={{
-            id: 1,
-            image: dogPictures.BlueHeeler,
-            description: "Example Description",
-            isFavorite: false,
-            name: "Cute Blue Heeler",
-          }}
-          key={1}
-          onTrashIconClick={() => {
-            alert("clicked trash");
-          }}
-          onHeartClick={() => {
-            alert("clicked heart");
-          }}
-          onEmptyHeartClick={() => {
-            alert("clicked empty heart");
-          }}
-          isLoading={false}
-        /> */}
+
       </>
     );
   }

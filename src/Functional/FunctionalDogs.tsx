@@ -11,20 +11,20 @@ export const FunctionalDogs = ({
   setIsLoading,
   allDogs,
   refetchData,
-  getFavoritedDogs,
-  getUnfavoritedDogs,
+  favoritedDogs,
+  unfavoritedDogs,
   activeTab,
 }: DogCardsLayout) => {
   const [filteredDogs, setFilteredDogs] = useState<Dog[]>(allDogs);
   useEffect(() => {
     if (activeTab === "favorited") {
-      setFilteredDogs(getFavoritedDogs);
+      setFilteredDogs(favoritedDogs);
     } else if (activeTab === "unfavorited") {
-      setFilteredDogs(getUnfavoritedDogs);
+      setFilteredDogs(unfavoritedDogs);
     } else {
       setFilteredDogs(allDogs);
     }
-  }, [activeTab, allDogs, getFavoritedDogs, getUnfavoritedDogs]);
+  }, [activeTab, allDogs, favoritedDogs, unfavoritedDogs]);
 
   const favoriteHandler = (dog: Dog) => {
     setIsLoading(true);
@@ -60,27 +60,6 @@ export const FunctionalDogs = ({
           isLoading={isLoading}
         />
       ))}
-      ,
-      {/* <DogCard
-        dog={{
-          id: 1,
-          image: dogPictures.BlueHeeler,
-          description: "Example Description",
-          isFavorite: false,
-          name: "Cute Blue Heeler",
-        }}
-        key={1}
-        onTrashIconClick={() => {
-          alert("clicked trash");
-        }}
-        onHeartClick={() => {
-          alert("clicked heart");
-        }}
-        onEmptyHeartClick={() => {
-          alert("clicked empty heart");
-        }}
-        isLoading={false}
-      /> */}
     </>
   );
 };

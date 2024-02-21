@@ -51,6 +51,7 @@ export class ClassCreateDogForm extends Component<{
           this.setState({
             dogNameInput: "",
             descriptionInput: "",
+            dogImageInput: "",
           });
         }}
       >

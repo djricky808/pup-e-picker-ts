@@ -11,11 +11,11 @@ export function FunctionalApp() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
-  const getFavoritedDogs = allDogs.filter(
+  const favoritedDogs = allDogs.filter(
     (dogs: Dog) => dogs.isFavorite === true
   );
 
-  const getUnfavoritedDogs = allDogs.filter(
+  const unfavoritedDogs = allDogs.filter(
     (dogs: Dog) => dogs.isFavorite === false
   );
 
@@ -43,8 +43,8 @@ export function FunctionalApp() {
       <FunctionalSection
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        getFavoritedDogs={getFavoritedDogs}
-        getUnfavoritedDogs={getUnfavoritedDogs}
+        favoritedDogs={favoritedDogs}
+        unfavoritedDogs={unfavoritedDogs}
       >
         {activeTab !== "create dog" ? (
           <FunctionalDogs
@@ -52,8 +52,8 @@ export function FunctionalApp() {
             setIsLoading={setIsLoading}
             allDogs={allDogs}
             refetchData={refetchData}
-            getFavoritedDogs={getFavoritedDogs}
-            getUnfavoritedDogs={getUnfavoritedDogs}
+            favoritedDogs={favoritedDogs}
+            unfavoritedDogs={unfavoritedDogs}
             activeTab={activeTab}
           />
         ) : (

@@ -13,8 +13,8 @@ export type SectionTypes = {
   children: ReactNode;
   activeTab: string | null;
   setActiveTab: (activeTab: string | null) => void;
-  getFavoritedDogs: Dog[];
-  getUnfavoritedDogs: Dog[];
+  favoritedDogs: Dog[];
+  unfavoritedDogs: Dog[];
   handleTabClick: (tab: string) => void;
 };
 
@@ -23,7 +23,7 @@ export type DogCardsLayout = {
   setIsLoading: (isLoading: boolean) => void;
   allDogs: Dog[];
   refetchData: () => void;
-  getFavoritedDogs: Dog[];
-  getUnfavoritedDogs: Dog[];
+  favoritedDogs: Dog[];
+  unfavoritedDogs: Dog[];
   activeTab: string | null;
 };

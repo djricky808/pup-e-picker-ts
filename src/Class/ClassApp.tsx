@@ -24,11 +24,11 @@ export class ClassApp extends Component {
         this.setState({ allDogs: dogs })
       );
     };
-    const getFavoritedDogs = allDogs.filter(
+    const favoritedDogs = allDogs.filter(
       (dogs: Dog) => dogs.isFavorite === true
     );
 
-    const getUnfavoritedDogs = allDogs.filter(
+    const unfavoritedDogs = allDogs.filter(
       (dogs: Dog) => dogs.isFavorite === false
     );
 
@@ -38,8 +38,8 @@ export class ClassApp extends Component {
           <h1>pup-e-picker (Class Version)</h1>
         </header>
         <ClassSection
-          getFavoritedDogs={getFavoritedDogs}
-          getUnfavoritedDogs={getUnfavoritedDogs}
+          favoritedDogs={favoritedDogs}
+          unfavoritedDogs={unfavoritedDogs}
           activeTab={activeTab}
           handleTabClick={this.handleTabClick}
         >
@@ -50,8 +50,8 @@ export class ClassApp extends Component {
               isLoading={isLoading}
               allDogs={allDogs}
               refetchData={refetchData}
-              getFavoritedDogs={getFavoritedDogs}
-              getUnfavoritedDogs={getUnfavoritedDogs}
+              favoritedDogs={favoritedDogs}
+              unfavoritedDogs={unfavoritedDogs}
               activeTab={activeTab}
             />
           ) : (

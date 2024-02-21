@@ -144,7 +144,7 @@
       "name": "Houndour",
       "image": "/assets/boxer.jpeg",
       "description": "He is a Pokemon from the Second Generation",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 20
     },
     {

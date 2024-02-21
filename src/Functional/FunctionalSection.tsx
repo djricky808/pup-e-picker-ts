@@ -6,8 +6,8 @@ export const FunctionalSection = ({
   children,
   activeTab,
   setActiveTab,
-  getFavoritedDogs,
-  getUnfavoritedDogs,
+  favoritedDogs,
+  unfavoritedDogs,
 }: Omit<SectionTypes, "handleTabClick">) => {
   return (
     <section id="main-section">
@@ -24,7 +24,7 @@ export const FunctionalSection = ({
               setActiveTab(`${activeTab === "favorited" ? "" : "favorited"}`);
             }}
           >
-            favorited ({getFavoritedDogs.length})
+            favorited ({favoritedDogs.length})
           </div>
 
           {/* This should display the unfavorited count */}
@@ -38,7 +38,7 @@ export const FunctionalSection = ({
               );
             }}
           >
-            unfavorited ( {getUnfavoritedDogs.length} )
+            unfavorited ( {unfavoritedDogs.length} )
           </div>
           <div
             className={`selector ${activeTab === "create dog" ? "active" : ""}`}

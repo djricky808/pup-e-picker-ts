@@ -11,8 +11,8 @@ export class ClassSection extends Component<
     const {
       children,
       activeTab,
-      getFavoritedDogs,
-      getUnfavoritedDogs,
+      favoritedDogs,
+      unfavoritedDogs,
       handleTabClick,
     } = this.props;
     return (
@@ -34,7 +34,7 @@ export class ClassSection extends Component<
                 handleTabClick("favorited");
               }}
             >
-              favorited ( {getFavoritedDogs.length} )
+              favorited ( {favoritedDogs.length} )
             </div>
 
             {/* This should display the unfavorited count */}
@@ -46,7 +46,7 @@ export class ClassSection extends Component<
                 handleTabClick("unfavorited");
               }}
             >
-              unfavorited ( {getUnfavoritedDogs.length} )
+              unfavorited ( {unfavoritedDogs.length} )
             </div>
             <div
               className={`selector ${
