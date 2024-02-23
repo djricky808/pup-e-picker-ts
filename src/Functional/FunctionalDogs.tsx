@@ -1,49 +1,40 @@
 import { useEffect } from "react";
 import { DogCard } from "../Shared/DogCard";
-import { Dog } from "../types";
-import { Requests } from "../api";
-import { useState } from "react";
+import { ActiveTabs, Dog } from "../types";
 
 type FDogCardsLayout = {
   isLoading: boolean;
-  setIsLoading: (isLoading: boolean) => void;
   allDogs: Dog[];
   refetchData: () => void;
-  favoritedDogs: Dog[];
-  unfavoritedDogs: Dog[];
-  activeTab: string | null;
+  activeTab: ActiveTabs | null;
+  deleteDog: (id: number) => void;
+  favoriteHandler: ({
+    dog,
+    newStatus,
+  }: {
+    dog: Dog;
+    newStatus: boolean;
+  }) => void;
 };
 
 // Right now these dogs are constant, but in reality we should be getting these from our server
 export const FunctionalDogs = ({
   isLoading,
-  setIsLoading,
   allDogs,
   refetchData,
-  favoritedDogs,
-  unfavoritedDogs,
   activeTab,
+  deleteDog,
+  favoriteHandler,
 }: FDogCardsLayout) => {
-  const [filteredDogs, setFilteredDogs] = useState<Dog[]>(allDogs);
-
-  useEffect(() => {
+  const filteredDogs = allDogs.filter((dog) => {
     if (activeTab === "favorited") {
-      setFilteredDogs(favoritedDogs);
+      return dog.isFavorite;
     } else if (activeTab === "unfavorited") {
-      setFilteredDogs(unfavoritedDogs);
+      return !dog.isFavorite;
     } else {
-      setFilteredDogs(allDogs);
+      return dog;
     }
-  }, [activeTab, allDogs, favoritedDogs, unfavoritedDogs]);
-
-  const favoriteHandler = (dog: Dog) => {
-    setIsLoading(true);
-    const newFavoriteStatus = !dog.isFavorite;
-    dog.isFavorite = newFavoriteStatus;
-    return Requests.updateDog(dog)
-      .then(() => refetchData())
-      .finally(() => setIsLoading(false));
-  };
+  });
 
   useEffect(() => {
     refetchData();
@@ -58,14 +49,13 @@ export const FunctionalDogs = ({
           dog={dog}
           key={dog.id}
           onHeartClick={() => {
-            favoriteHandler(dog);
+            favoriteHandler({ dog, newStatus: false });
           }}
-          onEmptyHeartClick={() => favoriteHandler(dog)}
+          onEmptyHeartClick={() => {
+            favoriteHandler({ dog, newStatus: true });
+          }}
           onTrashIconClick={() => {
-            setIsLoading(true);
-            return Requests.deleteDog(dog.id)
-              .then(() => refetchData())
-              .finally(() => setIsLoading(false));
+            deleteDog(dog.id);
           }}
           isLoading={isLoading}
         />

@@ -1,41 +1,30 @@
 import { Component } from "react";
 import { dogPictures } from "../dog-pictures";
-import { Requests } from "../api";
 import { Dog } from "../types";
-import { toast } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export class ClassCreateDogForm extends Component<{
   isLoading: boolean;
-  refetchData: () => Promise<void>;
+  createDog: (dog: Omit<Dog, "id">) => Promise<unknown>;
 }> {
   state = {
     dogNameInput: "",
     dogImageInput: "/assets/blue-heeler.png",
     descriptionInput: "",
-    isLoading: false,
+    // isLoading: false,
   };
 
-  componentDidUpdate(prevProps: { isLoading: boolean }) {
-    if (prevProps.isLoading !== this.props.isLoading) {
-      this.setState({ isLoading: this.props.isLoading });
-    }
-  }
+  // componentDidUpdate(prevProps: { isLoading: boolean }) {
+  //   if (prevProps.isLoading !== this.props.isLoading) {
+  //     this.setState({ isLoading: this.props.isLoading });
+  //   }
+  // }
 
   render() {
-    const { dogNameInput, dogImageInput, descriptionInput, isLoading } =
-      this.state;
-    const { refetchData } = this.props;
-    const createDog = (dog: Omit<Dog, "id">) => {
-      this.setState({ isLoading: true });
-      Requests.postDog(dog)
-        .then(() => {
-          refetchData();
-        })
-        .then(() => {
-          toast.success("Dog Created");
-        })
-        .finally(() => this.setState({ isLoading: false }));
-    };
+    const { dogNameInput, dogImageInput, descriptionInput } = this.state;
+
+    const { createDog, isLoading } = this.props;
+
     return (
       <form
         action=""
@@ -47,12 +36,17 @@ export class ClassCreateDogForm extends Component<{
             image: dogImageInput,
             description: descriptionInput,
             isFavorite: false,
-          });
-          this.setState({
-            dogNameInput: "",
-            descriptionInput: "",
-            dogImageInput: "",
-          });
+          })
+            .then(() => {
+              this.setState({
+                dogNameInput: "",
+                descriptionInput: "",
+                dogImageInput: "",
+              });
+            })
+            .catch(() => {
+              toast.error("Could not create dog.");
+            });
         }}
       >
         <h4>Create a New Dog</h4>

@@ -13,7 +13,6 @@ type CSectionTypes = {
 };
 
 export class ClassSection extends Component<CSectionTypes> {
-
   render() {
     const {
       children,

@@ -8,17 +8,19 @@ import toast from "react-hot-toast";
 
 export function FunctionalApp() {
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<ActiveTabs | null>(null);
 
-  const favoritedDogs = allDogs.filter((dogs: Dog) => dogs.isFavorite === true);
+  const favoritedDogs = allDogs.filter((dog) => dog.isFavorite === true);
 
-  const unfavoritedDogs = allDogs.filter(
-    (dogs: Dog) => dogs.isFavorite === false
-  );
+  const unfavoritedDogs = allDogs.filter((dog) => dog.isFavorite === false);
 
   const refetchData = () => {
-    return Requests.getAllDogs().then((dogs) => setAllDogs(dogs));
+    return Requests.getAllDogs()
+      .then((dogs) => setAllDogs(dogs))
+      .catch(() => {
+        toast.error("Failed to fetch dogs");
+      });
   };
 
   const handleTabClick = (tab: ActiveTabs) => {
@@ -27,12 +29,38 @@ export function FunctionalApp() {
 
   const createDog = (dog: Omit<Dog, "id">) => {
     setIsLoading(true);
-    Requests.postDog(dog)
+    return Requests.postDog(dog)
       .then(() => {
         refetchData();
       })
       .then(() => {
         toast.success("Dog Created");
+      })
+      .finally(() => setIsLoading(false));
+  };
+
+  const deleteDog = (id: number) => {
+    setIsLoading(true);
+    return Requests.deleteDog(id)
+      .then(() => refetchData())
+      .catch(() => toast.error("Could not delete dog."))
+      .finally(() => setIsLoading(false));
+  };
+
+  const favoriteHandler = ({
+    dog,
+    newStatus,
+  }: {
+    dog: Dog;
+    newStatus: boolean;
+  }) => {
+    setIsLoading(true);
+    dog.isFavorite = newStatus;
+    return Requests.updateDog(dog)
+      .then(() => refetchData())
+      .catch(() => {
+        dog.isFavorite = !newStatus;
+        toast.error("Could not update dog.");
       })
       .finally(() => setIsLoading(false));
   };
@@ -51,12 +79,11 @@ export function FunctionalApp() {
         {activeTab !== "create dog" ? (
           <FunctionalDogs
             isLoading={isLoading}
-            setIsLoading={setIsLoading}
             allDogs={allDogs}
             refetchData={refetchData}
-            favoritedDogs={favoritedDogs}
-            unfavoritedDogs={unfavoritedDogs}
             activeTab={activeTab}
+            deleteDog={deleteDog}
+            favoriteHandler={favoriteHandler}
           />
         ) : (
           <FunctionalCreateDogForm

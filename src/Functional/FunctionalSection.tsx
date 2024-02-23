@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 
 type FSectionTypes = {
   children: ReactNode;
-  activeTab: string | null;
+  activeTab: ActiveTabs | null;
   favoritedDogs: Dog[];
   unfavoritedDogs: Dog[];
   handleTabClick: (tab: ActiveTabs) => void;

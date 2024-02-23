@@ -18,22 +18,15 @@
       "name": "Keara",
       "image": "/assets/boxer.png",
       "description": "small distribution tab daring yodel",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 2
     },
     {
       "name": "Matteo",
       "image": "/assets/boxer.png",
       "description": "browser cautiously vastly yuck zowie yet incidentally",
-      "isFavorite": false,
-      "id": 3
-    },
-    {
-      "name": "Garret",
-      "image": "/assets/dalmation.png",
-      "description": "punch festoon secret recklessly shakily oak supposing jar",
       "isFavorite": true,
-      "id": 4
+      "id": 3
     },
     {
       "name": "Micah",
@@ -160,6 +153,20 @@
       "description": "The newest pokemon from Generation 9",
       "isFavorite": true,
       "id": 22
+    },
+    {
+      "name": "Husky",
+      "image": "/assets/blue-heeler.png",
+      "description": "My dream dog, except they are a little too active",
+      "isFavorite": false,
+      "id": 24
+    },
+    {
+      "name": "Growlithe",
+      "image": "/assets/blue-heeler.png",
+      "description": "One of my favorites from Gen 1",
+      "isFavorite": false,
+      "id": 25
     }
   ]
 }

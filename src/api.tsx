@@ -24,14 +24,20 @@ export const Requests = {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((response) => response.json());
+    }).then((response) => {
+      if (!response.ok) throw new Error("Could not create dog");
+      return response.json();
+    });
   },
 
   // should delete a dog from the database
   deleteDog: (id: number) => {
     return fetch(`${baseUrl}/dogs/${id}`, {
       method: "DELETE",
-    }).then((response) => response.json());
+    }).then((response) => {
+      if (!response.ok) throw new Error("Could not delete dog");
+      return response.json();
+    });
   },
 
   updateDog: (dog: Dog) => {
@@ -41,7 +47,10 @@ export const Requests = {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((response) => response.json());
+    }).then((response) => {
+      if (!response.ok) throw new Error("Could not update dog");
+      return response.json();
+    });
   },
 
   // Just a dummy function for use in the playground
